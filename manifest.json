@@ -1,23 +1,25 @@
 {
-    "manifest_version": 2,
-    "name": "URL Capture Extension",
-    "version": "1.0",
-    "description": "Capture URLs when tabs are opened or duplicated.",
-    "permissions": ["tabs"],
-    "background": {
-      "scripts": ["background.js"],
-      "persistent": false
-    },
-    "browser_action": {
-      "default_popup": "popup.html",
-      "default_icon": {
-        "16": "download.png"
-      }
-    },
-    "icons": {
+  "manifest_version": 2,
+  "name": "URL Observer",
+  "version": "1.0",
+  "description": "A Chrome extension to observe the current URL.",
+  "permissions": ["tabs"],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_icon": {
       "16": "download.png"
       
-    },
-    "permissions": ["tabs"]
-  }
-  
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
+  "permissions": ["activeTab"]
+}
